@@ -24,6 +24,7 @@
 .desc {
 	background: #81D4FA;
 	background: #B2EBF2;
+	background: #B2EBF2;
 	margin-bottom: 10px;
 	line-height: 30px;
 	padding: 15px;
@@ -35,6 +36,7 @@
 }
 .form-control:focus {
 	background: #B2EBF2;
+	background: #69F0AE;
 }
 
 .submit {

@@ -10,6 +10,12 @@
 
 
 {% block jumbotron %}
+	
+{% endblock %}
+
+
+{% block main_section %}
+<div class="container">
 	<div class="page-header">
 		<h1>Matching Test</h1>
 		<h3>Rules</h3>
@@ -25,47 +31,7 @@
 					var myTime = new Countdown({time : 600, width:150, height:80, rangeHi:"minute"});
 				</script>
 			</div>
-		</div>
-		
-		<div class="counter">
-			<div id="counter">
-<div id="counter_item1" class="counter_item">
-<div class="front"></div>
-<div class="digit digit0"></div>
-</div>
-<div id="counter_item2" class="counter_item">
-<div class="front"></div>
-<div class="digit digit0"></div>
-</div>
-<div id="counter_item3" class="counter_item">
-<div class="front"></div>
-<div class="digit digit_colon"></div>
-</div>
-<div id="counter_item4" class="counter_item">
-<div class="front"></div>
-<div class="digit digit0"></div>
-</div>
-<div id="counter_item5" class="counter_item">
-<div class="front"></div>
-<div class="digit digit0"></div>
-</div>
-</div>
-		</div>
-	</div>
-{% endblock %}
-
-
-{% block main_section %}
-	<div class="row">
-		<!-- {% for i in scrambled %}
-			<div class="desc col-lg-3">
-				{{ i.unique_id }}<br>
-				{{ i.desc }}
-			</div>
-		{% endfor %} -->
-	</div>
-		<div class="container">
-			<div class="row">
+	</div><br><br>
 				<!-- <h1 class="page-header">
 					{{ hold }}<br>
 					{{ randomized }}
@@ -102,10 +68,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="row">
-
-				<div class="col-lg-4">
+		
 					<!-- <form method="POST" action="{% url 'pattern:check_result' %}">
 						{% csrf_token %}
 					
@@ -117,7 +80,7 @@
 					{% endfor %}
 					<input type="submit" value="submit">
 					</form> -->
-				</div>
+		
 
 
 				<!-- <div class="col-lg-4">
@@ -129,7 +92,5 @@
 						
 					{% endfor %}
 				</div> -->
-			</div>
-		</div>
-
+</div>
 {% endblock %}
