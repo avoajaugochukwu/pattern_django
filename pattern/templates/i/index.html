@@ -28,12 +28,25 @@
 
 		<div class="container">
 			<div class="row">
+				<h1 class="page-header">
+					{{ hold }}<br>
+					{{ randomized }}
+				</h1>
+
+
+
 				<div class="col-lg-3">
 					{% for item in items %}
 						<div class="item">
 							{{ item.name }}
 							<img src="/static/img/{{ item.image_url }}">
 						</div>
+					{% endfor %}
+				</div>
+
+				<div class="col-lg-3">
+					{% for i in scrambled %}
+						{{ i.unique_id }}
 					{% endfor %}
 				</div>
 			</div>
