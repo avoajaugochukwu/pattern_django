@@ -2,25 +2,47 @@
 /* for django errors*/
 
 .item {
-  background: #fefef0;
-  max-height: 260px;
-  padding: 15px;
+  /*background: #fefef0;
+  background: #C5E1A5;*/
+  border: 1px solid #cec;
+  /*height: 350px;*/
+  padding: 5px;
   margin-bottom: 10px;
 }
 
 
 .item img {
-  max-width: 50%;
-}
+  max-width: 100%;
 
+  height: 270px;
+}
+.item-img-div {
+	width: 200px;
+  margin: 0 auto;
+  margin-bottom: 7px;
+}
 .desc {
 	background: #81D4FA;
+	background: #B2EBF2;
 	margin-bottom: 10px;
-	min-height: 170px;
+	line-height: 30px;
 	padding: 15px;
 }
 
-.answer {
+.form-control {
 	background: #DCEDC8;
-	min-height: 170px;
+	background: #FFF9C4;
+}
+.form-control:focus {
+	background: #B2EBF2;
+}
+
+.submit {
+	font-size: 1.4em;
+	line-height: 40px;
+}
+
+.footer {
+	height: 400px;
+	background: #f00000;
 }

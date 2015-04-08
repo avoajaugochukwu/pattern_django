@@ -36,4 +36,6 @@
 		// 	};
 		// 	$('.client-order-form-male').slideToggle(500);
 		// });
+// var myCountdown1 = new Countdown({time:316});
+
 });

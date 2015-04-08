@@ -16,24 +16,16 @@ def index(request):
 	for item in context['scrambled']:
 		solution_id.append(item.id)
 
-
 	solution_name = []
 	for i in context['scrambled']:
 		solution_name.append(str(i.unique_name))
 
 	request.session['solution_name'] = solution_name
-	# print 'solution_name', solution_name
-	# request.session['solution'] = 
-	# context['solution_id'] = solution_id
-	context['hold'] = solution_name
-	context['randomized'] = solution_id
-	# f = {}
-	# for i in context['scrambled']:
-	# 	f[i] = 
-	# context['scrambled']
+
+	# context['hold'] = solution_name
+	# context['randomized'] = solution_id
 
 	return render(request, 'p/index.html', context)
-
 
 
 def test(request):
@@ -42,31 +34,24 @@ def test(request):
 def check_result(request):
 	solution_name = request.session['solution_name']
 
-
 	hold = []
-	# print solution_name
+
 	if request.method == 'POST':
 		for i in solution_name:
-			# get input value with unique_name
 			a = request.POST.get(str(i))
-			# print str(i)
-			# hold contains the solutions but acoording to the solution_name [id]
 			hold.append(a)
-	# print solution_name
-	# print hold
+
 
 	user_answers = []
 	final_answer = 0
 	a = 0
 	for i in hold:
-	# while a <= len(solution_name) - 1:
 		bit = None
 		try:
 			bit = Item.objects.get(unique_id=i)
 			print 'bit.unique_name', bit.unique_name, a
 			if bit != None:
 				user_answers.append(bit.unique_name)
-
 
 		except:
 			user_answers.append('none')
@@ -80,8 +65,6 @@ def check_result(request):
 			print 'yes', solution_name[b], solution_name[b]
 			final_answer += 1
 		b += 1
-
-	# print user_answers
 
 
 
