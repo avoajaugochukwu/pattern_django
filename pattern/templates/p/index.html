@@ -1,0 +1,78 @@
+{% extends "p/layout/base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block jumbotron %}
+<div class="jumbotron-home-page">
+	<div class="col-lg-4">
+	</div>
+	<div class="col-lg-4 action-button-wrapper-home">
+		<a href="/suave/register" class="action-button-home">Get Started</a>
+	</div>
+
+</div>
+
+
+
+
+
+
+		<div class="container">
+			<div class="row">
+				<h1 class="page-header">
+					{{ hold }}<br>
+					{{ randomized }}
+				</h1>
+
+
+
+				<div class="col-lg-4">
+					{% for item in items %}
+						<div class="item">
+							{{ item.name }}
+							<img src="/static/img/{{ item.image_url }}">
+						</div>
+					{% endfor %}
+				</div>
+
+
+				<div class="col-lg-4">
+					<form method="POST" action="{% url 'pattern:check_result' %}">
+						{% csrf_token %}
+					
+					{% for i in items %}
+					<div class="answer">
+						<input type="text" name="{{ i.unique_name }}" value="">
+					</div>
+					
+					{% endfor %}
+					<input type="submit" value="submit">
+					</form>
+				</div>
+
+
+				<div class="col-lg-4">
+					{% for i in scrambled %}
+						<div class="desc">
+							{{ i.unique_id }}<br>
+							{{ i.desc }}
+						</div>
+						
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+{% endblock %}
+
+
+{% block main_section %}
+
+{% endblock %}

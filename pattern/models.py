@@ -6,3 +6,4 @@ class Item(models.Model):
 	name = models.CharField(max_length=100)
 	desc = models.CharField(max_length=1000)
 	image_url = models.CharField(max_length=100)
+	unique_name = models.CharField(max_length=50)
