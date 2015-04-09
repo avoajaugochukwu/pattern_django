@@ -1,0 +1,107 @@
+{% extends "p/layout/base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block jumbotron %}
+
+{% endblock %}
+
+
+{% block main_section %}
+<div class="container">
+	<div class="page-header">
+		<h1>Matching Test</h1>
+		<h3>Rules</h3>
+		<div class="row">
+			<div class="col-lg-6">
+				<ul>
+					<li>With reference from the <b>Description Table</b></li>
+					<li>Below the images enter the number that best matches the image</li>
+					<li>You have <b>10</b> minutes</li>
+				</ul>
+			</div>
+			<div class="col-lg-6 wrapper_test">
+				<script type="application/javascript">
+					var myTime = new Countdown({time : 600, width:150, height:80, rangeHi:"minute"});
+				</script>
+			</div>
+	</div><br><br>
+				<!-- <h1 class="page-header">
+					{{ hold }}<br>
+					{{ randomized }}
+				</h1> -->
+
+
+
+
+				<div class="col-lg-9">
+					<form method="POST" action="{% url 'pattern:check_result' %}" class="form-group">
+						<div class="wrapper_test">
+							{% for item in items %}
+								{% csrf_token %}
+								<div class="col-lg-4">
+									<div class="item">
+										<!-- {{ item.name }} -->
+
+									<div class="item-img-div"><img src="/static/img/{{ item.image_url }}" class="img"></div>
+									<p>Enter number</p>
+									<p><input type="text" class="form-control" name="{{ item.unique_name }}" value=""></p>
+									</div>
+								</div>
+
+							{% endfor %}
+						</div>
+						<div class="wrapper_result">
+							<div class="col-lg-6">
+								<script type="application/javascript">
+									var myTime = new Countdown({time : 600, width:150, height:80, rangeHi:"minute"});
+								</script>
+							</div>
+						</div>
+						<input type="submit" value="submit" class="btn btn-primary btn-block submit">
+					</form>
+				</div>
+				<div class="col-lg-3 wrapper_description">
+					<h3>Description Table</h3>
+					{% for i in scrambled %}
+						<div class="desc">
+							{{ i.unique_id }}<br>
+							{{ i.desc }}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+					<!-- <form method="POST" action="{% url 'pattern:check_result' %}">
+						{% csrf_token %}
+					
+					{% for i in items %}
+					<div class="answer">
+						<input type="text" name="{{ i.unique_name }}" value="">
+					</div>
+					
+					{% endfor %}
+					<input type="submit" value="submit">
+					</form> -->
+		
+
+
+				<!-- <div class="col-lg-4">
+					{% for i in scrambled %}
+						<div class="desc">
+							{{ i.unique_id }}<br>
+							{{ i.desc }}
+						</div>
+						
+					{% endfor %}
+				</div> -->
+</div>
+{% endblock %}

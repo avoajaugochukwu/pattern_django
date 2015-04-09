@@ -1,6 +1,12 @@
 @import url(bootstrap-3.min.css);
 /* for django errors*/
-
+* {
+	border-radius: 0px !important;
+}
+.home_page {
+	/*padding-top: 50px;*/
+	text-align: center;
+}
 .item {
   /*background: #fefef0;
   background: #C5E1A5;*/
@@ -33,10 +39,10 @@
 .form-control {
 	background: #DCEDC8;
 	background: #FFF9C4;
+	background: #f7f8be;
 }
 .form-control:focus {
-	background: #B2EBF2;
-	background: #69F0AE;
+	background: #f0f0f0;
 }
 
 .submit {
@@ -46,5 +52,23 @@
 
 .footer {
 	height: 400px;
-	background: #f00000;
+	background: #f0f0f0;
+}
+
+.view_result {
+	width: 100%;
+	background: #f00;
+	height: 300px;
+}
+
+
+.wrapper_result {
+	/*margin: 400px;*/
+	background: #fff;
+	display: none;
+}
+/*final_answer result.html*/
+.final_answer {
+	padding: 300px;
+
 }

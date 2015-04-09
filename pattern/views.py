@@ -1,12 +1,14 @@
-from random import randint
-
-
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from pattern.models import Item
 # Create your views here.
 
 def index(request):
+	context = {}
+	return render(request, 'p/index.html', context)
+
+
+def test(request):
 	context = {}
 	context['items'] = Item.objects.all()
 
@@ -21,17 +23,15 @@ def index(request):
 		solution_name.append(str(i.unique_name))
 
 	request.session['solution_name'] = solution_name
-
+	# --Debug
 	# context['hold'] = solution_name
 	# context['randomized'] = solution_id
+	# --Debug
 
-	return render(request, 'p/index.html', context)
-
-
-def test(request):
-	return HttpResponse(request.session['solution'])
+	return render(request, 'p/test.html', context)
 
 def check_result(request):
+	context = {}
 	solution_name = request.session['solution_name']
 
 	hold = []
@@ -41,7 +41,6 @@ def check_result(request):
 			a = request.POST.get(str(i))
 			hold.append(a)
 
-
 	user_answers = []
 	final_answer = 0
 	a = 0
@@ -49,7 +48,6 @@ def check_result(request):
 		bit = None
 		try:
 			bit = Item.objects.get(unique_id=i)
-			print 'bit.unique_name', bit.unique_name, a
 			if bit != None:
 				user_answers.append(bit.unique_name)
 
@@ -67,10 +65,12 @@ def check_result(request):
 		b += 1
 
 
+	context['final_answer'] = final_answer
+	# --Debug
+	# print 'len(hold)', len(hold)
+	# print 'len(solution_name)', len(solution_name)
+	# print 'len(user_answers)', len(user_answers)
+	# print 'final_answer', final_answer
+	# --Debug
 
-	print 'len(hold)', len(hold)
-	print 'len(solution_name)', len(solution_name)
-	print 'len(user_answers)', len(user_answers)
-	print 'final_answer', final_answer
-
-	return HttpResponse('else')
+	return render(request, 'p/result.html', context)

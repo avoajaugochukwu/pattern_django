@@ -10,87 +10,40 @@
 
 
 {% block jumbotron %}
-	
+	<div class="container page-header">
+		<h1>Image/ Text Matching and Pattern Recognition</h1>
+	</div>
 {% endblock %}
 
 
 {% block main_section %}
-<div class="container">
-	<div class="page-header">
-		<h1>Matching Test</h1>
-		<h3>Rules</h3>
+	<div class="container home_page">
 		<div class="row">
-			<div class="col-lg-6">
-				<ul>
-					<li>With reference from the <b>Description</b> table</li>
-					<li>Below the images enter the number that best matches the image</li>
-				</ul>
-			</div>
-			<div class="col-lg-6">
-				<script type="application/javascript">
-					var myTime = new Countdown({time : 600, width:150, height:80, rangeHi:"minute"});
-				</script>
-			</div>
-	</div><br><br>
-				<!-- <h1 class="page-header">
-					{{ hold }}<br>
-					{{ randomized }}
-				</h1> -->
-
-
-
-				<div class="col-lg-9">
-					<form method="POST" action="{% url 'pattern:check_result' %}" class="form-group">
-					{% for item in items %}
-						{% csrf_token %}
-						<div class="col-lg-4">
-							<div class="item">
-								<!-- {{ item.name }} -->
-							
-							<div class="item-img-div"><img src="/static/img/{{ item.image_url }}" class="img"></div>
-							<p>Enter number</p>
-							<p><input type="text" class="form-control" name="{{ item.unique_name }}" value=""></p>
-							</div>
-						</div>
-
-					{% endfor %}
-						<input type="submit" value="submit" class="btn btn-primary btn-block submit">
-					</form>
+			<div class="col-lg-4 col-lg-offset-4">
+				<h2>Example</h2>
+				<p>From the description table enter the number that best matches the image</p>
+				<br><br>
+				<div class="item">
+					<div class="item-img-div"><img src="/static/img/	see_by_chloe.jpg" class="img"></div>
+					<p>Enter number</p>
+					<p><input type="text" class="form-control" name="{{ item.unique_name }}" value="3"></p>
+					</div>
+					<br>
+				<a href="{% url 'pattern:test' %}" class="btn btn-success btn-lg">Start Test</a>
+				<br><br><br>
+				<p>At the end of the test, click the submit button to get the result.</p>
+				<br><br><br>
 				</div>
-				<div class="col-lg-3">
-					<h3>Description Table</h3>
-					{% for i in scrambled %}
-						<div class="desc">
-							{{ i.unique_id }}<br>
-							{{ i.desc }}
-						</div>
-					{% endfor %}
+				<div class="col-lg-4">
+					<div class="desc" style="margin-top:200px">
+						<h3>Description Table</h3>
+						3<br>
+						<p>Nice Shoe</p>
+					</div>
 				</div>
+				</div>
+
 			</div>
 		</div>
-		
-					<!-- <form method="POST" action="{% url 'pattern:check_result' %}">
-						{% csrf_token %}
-					
-					{% for i in items %}
-					<div class="answer">
-						<input type="text" name="{{ i.unique_name }}" value="">
-					</div>
-					
-					{% endfor %}
-					<input type="submit" value="submit">
-					</form> -->
-		
-
-
-				<!-- <div class="col-lg-4">
-					{% for i in scrambled %}
-						<div class="desc">
-							{{ i.unique_id }}<br>
-							{{ i.desc }}
-						</div>
-						
-					{% endfor %}
-				</div> -->
-</div>
+	</div>
 {% endblock %}

@@ -16,7 +16,7 @@
 		$('.size-container').click(function() {
 			$('.size-container').removeClass('size-new-color');
 			$(this).addClass('size-new-color');
-		})
+		});
 
 
 
@@ -36,6 +36,17 @@
 		// 	};
 		// 	$('.client-order-form-male').slideToggle(500);
 		// });
-// var myCountdown1 = new Countdown({time:316});
+//  setTimeout( "jQuery('body').hide();",3000 );
 
+
+	//  setTimeout("paulund_modal_box();", 3000);
+
+
+
+	setTimeout(function(){
+		$('.wrapper_test').slideUp(500, function() {
+			$('.wrapper_result').slideDown(500)
+		});
+		// $('.wrapper_result').slideDown(2000);
+	},600000)
 });
