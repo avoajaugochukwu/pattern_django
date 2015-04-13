@@ -14,36 +14,36 @@ def test(request):
 
 	context['scrambled'] = Item.objects.all().order_by('?')
 
-	solution_id = []
-	for item in context['scrambled']:
-		solution_id.append(item.id)
-
-	solution_name = []
+	solution = []
 	for i in context['scrambled']:
-		solution_name.append(str(i.unique_name))
+		solution.append(str(i.unique_name))
 
-	request.session['solution_name'] = solution_name
-	# --Debug
-	# context['hold'] = solution_name
-	# context['randomized'] = solution_id
-	# --Debug
+	request.session['solution'] = solution
 
 	return render(request, 'p/test.html', context)
 
+
+
+
+
 def check_result(request):
 	context = {}
-	solution_name = request.session['solution_name']
+	solution = request.session['solution']
 
+
+	# should hold the numbers entered
+	# represents the unique_id field
 	hold = []
-
+	# record all inputs in a list, including empty inputs
 	if request.method == 'POST':
-		for i in solution_name:
+		for i in solution:
 			a = request.POST.get(str(i))
 			hold.append(a)
 
 	user_answers = []
-	final_answer = 0
-	a = 0
+
+	# get the unique_id of each entry in the same way
+	# they were displayed in the test using hold
 	for i in hold:
 		bit = None
 		try:
@@ -54,23 +54,17 @@ def check_result(request):
 		except:
 			user_answers.append('none')
 			pass
-		a += 1
 
 
-	b = 0
-	while b <= len(solution_name) - 1:
-		if solution_name[b] == user_answers[b]:
-			print 'yes', solution_name[b], solution_name[b]
+	i = 0
+	final_answer = 0
+	# compare solution recorded with the one provided by user
+	while i <= len(solution) - 1:
+		if solution[i] == user_answers[i]:
 			final_answer += 1
-		b += 1
+		i += 1
 
 
 	context['final_answer'] = final_answer
-	# --Debug
-	# print 'len(hold)', len(hold)
-	# print 'len(solution_name)', len(solution_name)
-	# print 'len(user_answers)', len(user_answers)
-	# print 'final_answer', final_answer
-	# --Debug
 
 	return render(request, 'p/result.html', context)

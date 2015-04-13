@@ -16,23 +16,26 @@
 
 {% block main_section %}
 <div class="container">
-	<div class="page-header">
-		<h1>Matching Test</h1>
-		<h3>Rules</h3>
-		<div class="row">
-			<div class="col-lg-6">
-				<ul>
-					<li>With reference from the <b>Description Table</b></li>
-					<li>Below the images enter the number that best matches the image</li>
-					<li>You have <b>10</b> minutes</li>
-				</ul>
+	<div class="row">
+		<div class="page-header">
+			<h1>Matching Test</h1>
+			<h3>Rules</h3>
+			<div class="row">
+			
+				<div class="col-lg-6">
+					<ul>
+						<li>With reference from the <b>Description Table</b></li>
+						<li>Below the images enter the number that best matches the image</li>
+						<li>You have <b>10</b> minutes</li>
+					</ul>
+				</div>
+				<div class="col-lg-6 wrapper_test">
+					<script type="application/javascript">
+						var myTime = new Countdown({time : 600, width:150, height:80, rangeHi:"minute"});
+					</script>
+				</div>
 			</div>
-			<div class="col-lg-6 wrapper_test">
-				<script type="application/javascript">
-					var myTime = new Countdown({time : 600, width:150, height:80, rangeHi:"minute"});
-				</script>
-			</div>
-	</div><br><br>
+		</div><br><br>
 				<!-- <h1 class="page-header">
 					{{ hold }}<br>
 					{{ randomized }}
@@ -44,7 +47,7 @@
 				<div class="col-lg-9">
 					<form method="POST" action="{% url 'pattern:check_result' %}" class="form-group">
 						<div class="wrapper_test">
-							{% for item in items %}
+							{% for item in scrambled %}
 								{% csrf_token %}
 								<div class="col-lg-4">
 									<div class="item">
@@ -70,14 +73,13 @@
 				</div>
 				<div class="col-lg-3 wrapper_description">
 					<h3>Description Table</h3>
-					{% for i in scrambled %}
+					{% for i in items %}
 						<div class="desc">
 							{{ i.unique_id }}<br>
 							{{ i.desc }}
 						</div>
 					{% endfor %}
 				</div>
-			</div>
 		</div>
 
 					<!-- <form method="POST" action="{% url 'pattern:check_result' %}">
