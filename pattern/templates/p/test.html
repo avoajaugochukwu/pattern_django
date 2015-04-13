@@ -48,7 +48,7 @@
 								{% csrf_token %}
 								<div class="col-lg-4">
 									<div class="item">
-										<!-- {{ item.name }} -->
+										{{ item.unique_id }}
 
 									<div class="item-img-div"><img src="/static/img/{{ item.image_url }}" class="img"></div>
 									<p>Enter number</p>
